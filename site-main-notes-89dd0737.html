@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 主题介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf8f5;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #2d2a24;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        .page-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 0 4rem;
+        }
+
+        /* 顶部导航 */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0 1.2rem;
+            border-bottom: 1px solid #dcd6cc;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #4f3f2f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #5a4a3a;
+            text-decoration: none;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b09a7a;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+            color: #3d3228;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: #6b5e4e;
+            border-left: 3px solid #cbb79e;
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 正文排版 */
+        .intro-text {
+            font-size: 1.05rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .intro-text a {
+            color: #6f5539;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: background 0.2s;
+        }
+
+        .intro-text a:hover {
+            background: #f0e9df;
+        }
+
+        /* 引用块 */
+        .insight-block {
+            background: #f3eee6;
+            border-left: 5px solid #b8a58b;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0 2.2rem;
+            border-radius: 0 8px 8px 0;
+            font-style: normal;
+        }
+
+        .insight-block p {
+            margin-bottom: 0.4rem;
+        }
+
+        .insight-block .label {
+            font-weight: 600;
+            color: #4f3f2f;
+            letter-spacing: 0.5px;
+        }
+
+        /* 场景模块（三个卡片） */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 2.2rem;
+        }
+
+        .scene-card {
+            background: #fffffffb;
+            border: 1px solid #e3dbcf;
+            padding: 1.5rem 1.3rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #4a3d2e;
+            border-bottom: 1px solid #ebe3d8;
+            padding-bottom: 0.35rem;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #3f382f;
+        }
+
+        /* 常见说明（FAQ摘要） */
+        .faq-summary {
+            margin: 2.8rem 0 2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #3d3228;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #ddd5c9;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #4f3f2f;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #4f453a;
+        }
+
+        .faq-answer a {
+            color: #6f5539;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .faq-answer a:hover {
+            background: #f0e9df;
+        }
+
+        /* 提示框（不同色） */
+        .tip-box {
+            background: #e9e2d7;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1.8rem;
+            border: 1px solid #d6cdbe;
+        }
+
+        .tip-box strong {
+            color: #4f3f2f;
+            font-weight: 600;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 0 14px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .nav-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .insight-block {
+                padding: 1rem;
+            }
+            .scenes-grid {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+
+    <!-- 导航 -->
+    <nav class="nav-bar">
+        <span class="nav-brand">· 主题 ·</span>
+        <div class="nav-links">
+            <a href="#intro">概述</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>游戏与人文视角</h1>
+        <div class="hero-sub">从机制到叙事，理解「玩」背后的逻辑</div>
+    </div>
+
+    <!-- 正文区，包含核心介绍 + 自然链接 -->
+    <div class="intro-text" id="intro">
+        <p>电子游戏早已超越单纯的娱乐属性，成为融合叙事、策略与交互的文化载体。当我们谈论游戏时，往往在讨论规则如何塑造体验、视觉如何引导情绪，以及玩家如何在虚拟空间中建立新的联结。这些维度共同构成了现代游戏研究的基石。</p>
+        <p>在众多探索游戏文化的内容平台中，<a href="https://site-main-aiyouxi.com.cn">爱游戏</a> 持续关注游戏设计的本质与玩家社群的多元生态。从独立作品到大型项目，从机制拆解到玩家故事，这一主题始终试图还原游戏作为表达媒介的本来面貌。</p>
+        <p>无论你是开发者、研究者还是资深玩家，保持对游戏语言的观察，往往能发现比通关更持久的乐趣。</p>
+    </div>
+
+    <!-- 引用块（知识型提示） -->
+    <div class="insight-block">
+        <p><span class="label">◈ 拆解视角</span></p>
+        <p>一款游戏的核心体验通常由三个层次构成：规则系统（机制层）、美学呈现（感官层）、以及玩家自主产生的叙事（意义层）。三者相互交织，缺一不可。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div id="scenes" style="margin-bottom: 0.2rem;">
+        <h2 style="font-weight:400; color:#3d3228; margin-bottom:0.3rem;">三种典型内容场景</h2>
+        <p style="color:#5a4e3e; margin-bottom:1.2rem; font-size:0.95rem;">以下场景展示了游戏内容如何在不同语境中被讨论与再创造。</p>
+    </div>
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>机制拆解</h3>
+            <p>从资源循环到难度曲线，分析设计师如何通过数值与规则引导玩家行为。例如回合制策略中的行动点分配，或开放世界中的动态等级调整。</p>
+        </div>
+        <div class="scene-card">
+            <h3>叙事延伸</h3>
+            <p>游戏文本、环境叙事与玩家选择共同构成独特的故事网络。一些作品甚至允许玩家通过沉默或失败来推进剧情，模糊了作者与用户的边界。</p>
+        </div>
+        <div class="scene-card">
+            <h3>社群共创</h3>
+            <p>模组制作、速通挑战、玩家二创——社群不仅消费内容，也在持续改写游戏的文化内涵。这类二次生产往往反向影响官方设计思路。</p>
+        </div>
+    </div>
+
+    <!-- 提示框 -->
+    <div class="tip-box">
+        <strong>📌 阅读建议</strong> —— 理解一款游戏，不妨先忽略画面与类型，尝试列出它的三条核心规则。规则即偏见，而偏见定义了体验的边界。
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="faq-summary" id="faq">
+        <h2>常见说明</h2>
+        <div class="faq-item">
+            <div class="faq-question">「爱游戏」涵盖哪些内容方向？</div>
+            <div class="faq-answer">主要围绕游戏设计、玩家文化、独立作品推荐及行业观察，避免纯攻略或数值攀比。更多可参阅 <a href="https://site-main-aiyouxi.com.cn">爱游戏</a> 上的专题分类。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">内容是否偏向特定平台或类型？</div>
+            <div class="faq-answer">不刻意区分平台，但更关注那些在机制或表达上有独特尝试的作品——无论它们是3A项目还是个人开发的小品。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">是否有讨论区或投稿渠道？</div>
+            <div class="faq-answer">目前以主题文章为主，部分内容开放评论。具体互动方式请以 <a href="https://site-main-aiyouxi.com.cn">爱游戏</a> 页面实际展示为准。</div>
+        </div>
+    </div>
+
+    <!-- 结尾 -->
+    <div style="margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid #ddd5c9; font-size: 0.9rem; color: #6f6252;">
+        <p>游戏是规则的游戏，也是意义的游戏。希望这个页面能提供一些观察的起点。</p>
+    </div>
+
+</div>
+</body>
+</html>
