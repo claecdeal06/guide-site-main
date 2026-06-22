@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f1f3f6;
+            color: #2c3e4f;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 柔和阴影 & 卡片统一风格 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-weight: 550;
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #94a3b8;
+            padding-left: 1rem;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #1e2b3c;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        h2:before {
+            content: "▍";
+            font-size: 1.6rem;
+            color: #7a8ba3;
+            line-height: 1;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin: 1.5rem 0 0.6rem;
+            color: #2d4055;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 强调链接，但仅限文章引用 */
+        .em-link {
+            font-weight: 450;
+        }
+
+        /* 目录感布局 两列网格 */
+        .grid-double {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .grid-double .item {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e9edf2;
+        }
+
+        .item strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #1e293b;
+        }
+
+        .item span {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            color: #3b4e62;
+            margin-right: 0.5rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid #dce2ea;
+        }
+
+        .badge-group {
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        .faq-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eaedf2;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 480;
+            margin-bottom: 0.1rem;
+            color: #1e2b3c;
+        }
+
+        .faq-a {
+            font-size: 0.93rem;
+            color: #4a5c6e;
+            padding-left: 0.8rem;
+            border-left: 2px solid #d0d9e2;
+            margin-top: 0.2rem;
+        }
+
+        .note-box {
+            background: #f4f7fb;
+            border-left: 4px solid #9aaec2;
+            padding: 1rem 1.4rem;
+            border-radius: 10px;
+            margin: 1.3rem 0 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.8rem;
+            margin: 0.8rem 0;
+        }
+
+        .tag-list span {
+            background: #eef2f7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            color: #3b4e62;
+            border: 1px solid #dce2ea;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce2ea;
+            margin: 1.2rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #6b7e92;
+            margin-top: 2.5rem;
+            text-align: center;
+            border-top: 1px solid #dbe0e7;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .grid-double {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .subhead {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero 区：温和的再次访问提示 -->
+    <div class="card" style="padding-bottom: 1.8rem;">
+        <h1>爱游戏 · 知识库</h1>
+        <div class="subhead">从浏览到收藏，从收藏到常回</div>
+        <p style="font-size: 1.02rem;">
+            这里不是一次性的入口，而是你可以反复回来查阅、标记、沉淀的地方。<br>
+            无论你是因为某个感兴趣的主题初次来到这里，还是已经来过几次，都欢迎你继续把 <a href="https://cn-page-aiyouxi.com" class="em-link">爱游戏</a> 留在你的收藏夹或阅读清单里。
+        </p>
+        <div class="note-box">
+            💡 如果你觉得本站内容有帮助，可以随时把它加入书签。下次再来时，你会发现新的收录和整理。
+        </div>
+    </div>
+
+    <!-- 目录感布局：分区卡片（可视为索引区） -->
+    <div class="card">
+        <h2>内容速览 · 目录</h2>
+        <p style="margin-bottom: 0.8rem;">以下分类可以帮助你快速定位感兴趣的部分，每个板块都会持续补充和修订。</p>
+        <div class="grid-double">
+            <div class="item">
+                <strong>📖 游戏笔记</strong>
+                <span>机制拆解 · 体验记录 · 横向比较</span>
+            </div>
+            <div class="item">
+                <strong>🧩 开发手记</strong>
+                <span>原型思路 · 设计取舍 · 小工具</span>
+            </div>
+            <div class="item">
+                <strong>🗂️ 专题整理</strong>
+                <span>类型脉络 · 历史回溯 · 参考清单</span>
+            </div>
+            <div class="item">
+                <strong>🔍 问答/FAQ</strong>
+                <span>常见疑问 · 概念澄清 · 使用指引</span>
+            </div>
+        </div>
+        <div class="badge-group">
+            <span class="badge">最近更新：界面交互</span>
+            <span class="badge">标签筛选 · 建设中</span>
+            <span class="badge">常读索引</span>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.93rem; color: #4b5e72;">
+            如果你对某个方向感兴趣，欢迎持续关注 <a href="https://cn-page-aiyouxi.com">爱游戏</a> 的后续更新。每次变动可能不大，但积累起来会更丰富。
+        </p>
+    </div>
+
+    <!-- 说明区 + 提示区 合并为一张卡片 -->
+    <div class="card">
+        <h2>使用说明 · 一些提醒</h2>
+        <p>
+            本站以知识整理和兴趣记录为主，内容会依据个人视角进行筛选和汇编。你可以把它看作一个不断生长的笔记本，而不是最终结论。
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1rem 0 0.5rem;">
+            <div style="flex: 1; min-width: 180px;">
+                <h3 style="margin-top: 0;">🔖 关于收藏</h3>
+                <p style="font-size: 0.94rem;">把网站加入书签后，每隔一段时间回来看一眼，可能会有新的条目或修订。部分内容会标注日期。</p>
+            </div>
+            <div style="flex: 1; min-width: 180px;">
+                <h3 style="margin-top: 0;">📌 关于关注</h3>
+                <p style="font-size: 0.94rem;">目前没有邮件推送，但你可以通过不定期直接访问来了解变化。收藏即是最好的关注方式。</p>
+            </div>
+        </div>
+        <hr>
+        <div class="tag-list">
+            <span># 游戏设计</span>
+            <span># 机制笔记</span>
+            <span># 独立游戏</span>
+            <span># 交互思考</span>
+            <span># 资料归档</span>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #5c7185;">
+            这些标签也会逐步扩充，方便你按兴趣翻阅。
+        </p>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要 + 小知识 -->
+    <div class="card">
+        <h2>常见疑问 · 摘录</h2>
+        <div class="faq-item">
+            <div class="faq-q">这个网站主要收录什么内容？</div>
+            <div class="faq-a">目前以个人向的游戏设计笔记、机制解析和开发随笔为主，偶尔会有小型专题。内容范围偏向思考和记录，而非新闻或评测。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">内容会频繁更新吗？</div>
+            <div class="faq-a">更新节奏不算快，但每次修改都会力求清晰。如果你发现某个页面长时间未变化，可能是在积累下一批内容。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">我可以转载或引用这里的文章吗？</div>
+            <div class="faq-a">个人学习引用请随意，公开转载前希望可以标明出处。具体每篇也可能有单独说明。</div>
+        </div>
+        <div style="margin-top: 1rem; font-size: 0.92rem;">
+            <p>更多问答正在整理中。如果你有想了解的，也欢迎通过 <a href="https://cn-page-aiyouxi.com">爱游戏</a> 页面上的方式留言或反馈（功能待完善）。</p>
+        </div>
+    </div>
+
+    <!-- 额外提示区：关于持续关注的价值 -->
+    <div class="card" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+        <h2>为什么值得再次回来</h2>
+        <p>
+            一个知识库的生命力在于积累和修订。也许今天的条目只有寥寥几笔，但下个月再看，可能就有了新的对比、补充或修正。<br>
+            把 <a href="https://cn-page-aiyouxi.com">爱游戏</a> 放在一个方便找到的位置，偶尔路过，就是最好的支持。
+        </p>
+        <p style="margin-bottom: 0.2rem;">
+            也欢迎你把这里推荐给同样对这些话题感兴趣的朋友——不需要宣传话术，只需要一句“这个站我偶尔会看看”。
+        </p>
+        <div style="margin-top: 1.2rem; padding: 0.8rem 1rem; background: #edf1f7; border-radius: 12px; font-size: 0.9rem; color: #31465a;">
+            📋 小提示：你可以将本页添加到手机主屏幕（iOS Safari / Android Chrome），方便下次直接打开。
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <a href="https://cn-page-aiyouxi.com" style="border-bottom: 1px solid #b6c4d4;">爱游戏</a> · 知识库索引页 · 内容持续整理中
+    </div>
+</div>
+</body>
+</html>
